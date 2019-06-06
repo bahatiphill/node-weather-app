@@ -6,11 +6,8 @@ const forecast = require("./utils/forecast");
 
 const app = express();
 
-//console.log(require("dotenv").config({ debug: true }));
-const test = require("dotenv").config();
-console.log("test");
-console.log(test);
-console.log(process.env.DARKSKY_KEY);
+// port to run on
+const port = process.env.PORT || 3000;
 
 //Define Paths (views and public) for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
@@ -92,6 +89,6 @@ app.get("*", (req, res) => {
   res.render("404", { error: "404 page not found" });
 });
 
-app.listen(3000, () => {
-  console.log("Server is up and running");
+app.listen(port, () => {
+  console.log("Server is up and running on port" + port);
 });
